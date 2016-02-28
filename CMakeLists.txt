@@ -19,6 +19,10 @@ set(LINK_LIBS
 	sfml-graphics-s
 	sfml-window-s
 	sfml-system-s
+	opengl32
+	freetype
+	jpeg
+	winmm
 	)
 
 #Add src files
@@ -27,6 +31,7 @@ set(SOURCES ${SOURCES} main.cpp)
 
 #create exe
 add_executable(FlappyClone ${SOURCES})
+target_link_libraries(FlappyClone ${LINK_LIBS})
 
 
 	
