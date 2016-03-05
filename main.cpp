@@ -1,14 +1,17 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <Player.h>
+#include <Walls.h>
 
 
 int main(void)
 {
 	sf::RenderWindow window(sf::VideoMode(800,600), "FlappyClone", sf::Style::Close);
+	window.setFramerateLimit(60);
 	sf::View view(sf::Vector2f(0,0), sf::Vector2f(800, 600));
 	window.setView(view);
 	Player player;
+	Walls walls;
 
 	
 	sf::Clock clock;
@@ -32,11 +35,15 @@ int main(void)
 
 		//Update
 		player.update(deltaTime.asSeconds());
+		walls.update(deltaTime.asSeconds());
 
 		//Draw Calls
 		window.draw(player.sprite);	
+		window.draw(walls.wall1);
+		window.draw(walls.wall2);
 
-
+		if(walls.position.x < -450)
+			walls.position = sf::Vector2f(400, 0);
 
 		//Display Window
 		window.display();

@@ -22,7 +22,7 @@ Player::~Player()
 void Player::update(float deltaTime) 
 {
 	timeToNextJump -= deltaTime;
-	position = position + velocity;
+	position = position + velocity * deltaTime;
 	velocity = sf::Vector2f(velocity.x, velocity.y + (gravity * deltaTime));
 
 	velocity.y = range(velocity.y, -maxSpeed, maxSpeed); 

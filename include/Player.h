@@ -13,10 +13,10 @@ public:
 	sf::RectangleShape sprite;
 	sf::Vector2f size = sf::Vector2f(25, 25);
 
-	float gravity = 1;
-	float jumpVel = 0.5;
-	float jumpPause = 0.5;
-	float maxSpeed = 1;
+	float gravity = 800;
+	float jumpVel = 300;
+	float jumpPause = 0.3;
+	float maxSpeed = 500;
 	
 
 //Member functions
