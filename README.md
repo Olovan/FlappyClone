@@ -1,7 +1,6 @@
-#FlappyClone
+#FlappyClone - WIP
 A super basic flappybird program
 
-**WIP**
 
 
 *Dependencies*
