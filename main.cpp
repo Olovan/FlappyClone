@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Player.h>
 #include <Walls.h>
+#include <GameState.h>
 
 
 int main(void)
@@ -35,15 +36,24 @@ int main(void)
 
 		//Update
 		player.update(deltaTime.asSeconds());
-		walls.update(deltaTime.asSeconds());
+		walls.update(deltaTime.asSeconds(), player);
 
 		//Draw Calls
 		window.draw(player.sprite);	
 		window.draw(walls.wall1);
 		window.draw(walls.wall2);
 
+		//Game Logic
 		if(walls.position.x < -450)
 			walls.position = sf::Vector2f(400, 0);
+		if(GameState::playerDead == true)
+		{
+			player.position = sf::Vector2f(0, 0);
+			walls.position = sf::Vector2f(400, 0);
+			GameState::playerDead = false;
+		}
+
+		
 
 		//Display Window
 		window.display();

@@ -12,6 +12,7 @@ public:
 
 	sf::RectangleShape sprite;
 	sf::Vector2f size = sf::Vector2f(25, 25);
+	sf::Vector2f position;
 
 	float gravity = 800;
 	float jumpVel = 300;
@@ -24,7 +25,6 @@ public:
 
 private:
 	/* data */
-	sf::Vector2f position;
 	sf::Vector2f velocity;
 	sf::Texture texture;
 	float timeToNextJump = 0;

@@ -24,7 +24,7 @@ public:
 
 	bool checkCollision(Player &player);
 	void moveTo(sf::Vector2f destination);
-	void update(float deltaTime);
+	void update(float deltaTime, Player &player);
 	
 
 		
