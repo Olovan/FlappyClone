@@ -4,14 +4,27 @@
 #include <Walls.h>
 #include <GameState.h>
 
+#include <string>
+
 
 int main(void)
 {
-    srand(time(NULL));
+	srand(time(NULL));
+
+	sf::Font font;
+	font.loadFromFile("arial.ttf");
+	sf::Text scoreText;
+	scoreText.setFont(font);
+	scoreText.setString(std::to_string(GameState::score));
+	scoreText.setCharacterSize(24);
+	scoreText.setColor(sf::Color::White);
+	scoreText.setPosition(-380,-280);
+
 	sf::RenderWindow window(sf::VideoMode(800,600), "FlappyClone", sf::Style::Close);
 	window.setFramerateLimit(60);
 	sf::View view(sf::Vector2f(0,0), sf::Vector2f(800, 600));
 	window.setView(view);
+
 	Player player;
 	Walls walls;
 
@@ -43,13 +56,16 @@ int main(void)
 		window.draw(player.sprite);
 		window.draw(walls.wall1);
 		window.draw(walls.wall2);
+		window.draw(scoreText);
 
 		//Game Logic
 		if(walls.position.x < -450)
-        {
-            float offset = rand() % 300 - 150;
-            walls.position = sf::Vector2f(400, offset);
-        }
+		{
+			float offset = rand() % 300 - 150;
+			walls.position = sf::Vector2f(400, offset);
+			GameState::setScore(GameState::score + 1);
+			scoreText.setString(std::to_string(GameState::score));
+		}
 
 		if(GameState::playerDead == true)
 		{
@@ -57,6 +73,7 @@ int main(void)
 			walls.position = sf::Vector2f(400, 0);
 			GameState::playerDead = false;
 			GameState::resetScore();
+			scoreText.setString(std::to_string(GameState::score));
 		}
 
 
