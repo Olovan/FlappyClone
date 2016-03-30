@@ -12,7 +12,7 @@ public:
 	sf::Color color = sf::Color::Red;
 	float wallHeight = 600;
 	float wallWidth = 50;
-	float wallGap = 100;
+	float wallGap = 80;
 	float defaultSpeed = 300.0f;
 
 
@@ -25,9 +25,9 @@ public:
 	bool checkCollision(Player &player);
 	void moveTo(sf::Vector2f destination);
 	void update(float deltaTime, Player &player);
-	
 
-		
+
+
 
 private:
 	/* data */

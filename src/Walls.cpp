@@ -22,7 +22,11 @@ Walls::~Walls()
 
 bool Walls::checkCollision(Player &player) 
 {
-	
+	if(player.sprite.getGlobalBounds().intersects(wall1.getGlobalBounds()) || player.sprite.getGlobalBounds().intersects(wall2.getGlobalBounds()))
+	{
+		return true;
+	}
+	return false;
 }
 
 void Walls::moveTo(sf::Vector2f destination) 
@@ -38,11 +42,9 @@ void Walls::update(float deltaTime, Player &player)
 	
 	
 	//Check For Collision with Player
-	if(player.sprite.getGlobalBounds().intersects(wall1.getGlobalBounds()) || player.sprite.getGlobalBounds().intersects(wall2.getGlobalBounds()))
+	if(checkCollision(player))
 	{
 		GameState::playerDead = true;
-		if(GameState::playerDead == true)
-			std::cout << "Dead" << std::endl;
 	}
 
 }

@@ -7,6 +7,7 @@
 
 int main(void)
 {
+    srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(800,600), "FlappyClone", sf::Style::Close);
 	window.setFramerateLimit(60);
 	sf::View view(sf::Vector2f(0,0), sf::Vector2f(800, 600));
@@ -14,14 +15,14 @@ int main(void)
 	Player player;
 	Walls walls;
 
-	
+
 	sf::Clock clock;
 	sf::Time previousTime;
 	while(window.isOpen())
 	{
 		//Get Time Elapsed
 		sf::Time deltaTime = clock.getElapsedTime() - previousTime;
-		previousTime= clock.getElapsedTime();	
+		previousTime= clock.getElapsedTime();
 		//Poll Events
 		sf::Event event;
 		while(window.pollEvent(event))
@@ -39,25 +40,30 @@ int main(void)
 		walls.update(deltaTime.asSeconds(), player);
 
 		//Draw Calls
-		window.draw(player.sprite);	
+		window.draw(player.sprite);
 		window.draw(walls.wall1);
 		window.draw(walls.wall2);
 
 		//Game Logic
 		if(walls.position.x < -450)
-			walls.position = sf::Vector2f(400, 0);
+        {
+            float offset = rand() % 300 - 150;
+            walls.position = sf::Vector2f(400, offset);
+        }
+
 		if(GameState::playerDead == true)
 		{
 			player.position = sf::Vector2f(0, 0);
 			walls.position = sf::Vector2f(400, 0);
 			GameState::playerDead = false;
+			GameState::resetScore();
 		}
 
-		
+
 
 		//Display Window
 		window.display();
-				
+
 
 	}
 	return 0;

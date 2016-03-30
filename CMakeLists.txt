@@ -15,7 +15,7 @@ include_directories(include)
 link_directories(dependencies/SFML)
 
 #add libraries
-set(LINK_LIBS 
+set(LINK_LIBS
 	sfml-graphics-s
 	sfml-window-s
 	sfml-system-s
@@ -27,12 +27,13 @@ set(LINK_LIBS
 
 #Add src files
 file(GLOB SOURCES "src/*.cpp")
+file(GLOB HEADERS "include/*.h")
 set(SOURCES ${SOURCES} main.cpp)
 
 #create exe
-add_executable(FlappyClone ${SOURCES})
+add_executable(FlappyClone ${SOURCES} ${HEADERS})
 target_link_libraries(FlappyClone ${LINK_LIBS})
 
 
-	
+
 
