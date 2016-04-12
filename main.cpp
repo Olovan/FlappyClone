@@ -5,6 +5,19 @@
 #include <GameState.h>
 
 #include <string>
+#include <sstream>
+
+namespace std
+{
+    template <typename T>
+    std::string to_string(T input)
+    {
+        std::ostringstream buffer;
+        buffer << input;
+        return buffer.str();
+    }
+}
+
 
 
 int main(void)
