@@ -58,7 +58,7 @@ int main(void)
 		}
 
 		//Clear Window
-		window.clear();
+		window.clear(sf::Color(50, 100, 255));
 
 
 		//Update

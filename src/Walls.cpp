@@ -5,10 +5,18 @@
 
 Walls::Walls() 
 {
-	wall1.setFillColor(color);	
+	texture.loadFromFile("../images/WallTexture.png"); 
+	texture.setRepeated(true);
+
+	//wall1.setFillColor(color);	
 	wall1.setSize(sf::Vector2f(wallWidth, wallHeight));
-	wall2.setFillColor(color);
+	wall1.setTexture(&texture, false);
+	wall1.setTextureRect(sf::IntRect(0, 0, 256, 256*wallHeight/wallWidth));
+	//wall2.setFillColor(color);
 	wall2.setSize(sf::Vector2f(wallWidth, wallHeight));
+	wall2.setTexture(&texture, false);
+	wall2.setTextureRect(sf::IntRect(0, 0, 256, 256*wallHeight/wallWidth));
+
 	
 	velocity = sf::Vector2f(-defaultSpeed, 0);
 
