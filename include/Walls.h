@@ -20,6 +20,7 @@ public:
 	sf::Vector2f velocity;
 	sf::RectangleShape wall1;
 	sf::RectangleShape wall2;
+	sf::Texture texture;
 
 
 	bool checkCollision(Player &player);
